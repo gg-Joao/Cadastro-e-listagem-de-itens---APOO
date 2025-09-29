@@ -22,8 +22,8 @@ class ItemDAO:
     def adicionar(self, item: Item):
         conn = sqlite3.connect(self.db_name)
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO itens (descricao, quantidade) VALUES (?, ?)",
-                       (item.descricao, item.quantidade))
+        cursor.execute(f"INSERT INTO itens (descricao, quantidade) VALUES ('{item.descricao}', {item.quantidade})"),
+        (item.descricao, item.quantidade)
         conn.commit()
         conn.close()
 
